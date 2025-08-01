@@ -61,7 +61,20 @@ const formular =
 
         // Formular zurücksetzen
         formular.reset();
-    });
+
+        // Standort erneut setzen
+        if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+            function(position) {
+                const lat = position.coords.latitude.toFixed(5);
+                const lng = position.coords.longitude.toFixed(5);
+                document.getElementById('ort').value = `Lat: ${lat}, Lng: ${lng}`;
+            },
+                function(error) {
+                console.error("Standort konnte nicht erneut gesetzt werden:", error);
+            }
+        );
+        }});
 
 
     }); 
