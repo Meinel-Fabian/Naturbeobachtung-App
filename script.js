@@ -36,9 +36,9 @@ const formular =
         }
 
       // Standort holen (asynchron!)
-    navigator.geolocation.getCurrentPosition(function(position) {
-        const lat = position.coords.latitude;
-        const lng = position.coords.longitude;
+        navigator.geolocation.getCurrentPosition(function(position) {
+            const lat = position.coords.latitude;
+            const lng = position.coords.longitude;
 
         // Marker auf der Karte setzen
         L.marker([lat, lng])
