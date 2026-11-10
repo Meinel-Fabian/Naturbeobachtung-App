@@ -17,8 +17,8 @@ Erst wenn eine Etappe läuft, beginnt die nächste.
 Filter nach Art und Zeitraum kommen erst nach Etappe 1.
 
 ## Entscheidungen
-- React + TypeScript statt SvelteKit: Projekt dient auch als Portfolio für den Berufseinstieg,
-  React ist am gefragtesten, TypeScript knüpft an C# an. Vite statt Next.js (schlanker).
+- React + TypeScript statt SvelteKit: React ist am weitesten verbreitet, TypeScript ist Standard.
+  Vite statt Next.js (schlanker, weniger eigene Konzepte).
 - Standort von Anfang an mit PostGIS (geography Point). Speichern als `POINT(laenge breite)`
   (Länge zuerst!), Lesen als Zahlen über `ST_Y` (Breite) und `ST_X` (Länge).
 
@@ -32,16 +32,16 @@ Filter nach Art und Zeitraum kommen erst nach Etappe 1.
 - Kommunikation auf Deutsch.
 
 ## Lernmodus
-Ich möchte beim Bauen lernen. Hintergrund: Umschulung zum Anwendungsentwickler (C#),
-danach 2 Jahre Trainer. HTML und CSS mittel, JavaScript gering, keine Web-Erfahrung;
-Frameworks, Datenbanken und Git nur Grundlagen. Ich habe wenig und unregelmäßig Zeit.
-Ziel: Berufseinstieg als Entwickler, das Projekt soll auf GitHub vorzeigbar sein.
-Schwerpunkt: das Zusammenspiel von HTML, CSS und JS sowie die JS/TS-Syntax.
+Ich möchte beim Bauen lernen. Ich komme von C# und bin neu in der Webentwicklung.
+Persönlicher Hintergrund und Lernnotizen liegen im privaten Repo
+Meinel-Fabian/Lernnotizen_Hintergrund (HINTERGRUND.md, LERNNOTIZEN.md). Ist es in der
+Sitzung verfügbar, lies HINTERGRUND.md zu Beginn. Persönliches gehört nie in dieses
+öffentliche Repo.
 - Erkläre Konzepte, bevor du sie umsetzt, und erkläre JS/TS-Syntax ausführlich,
   gern mit Vergleichen zu C#.
 - Ich muss jede Zeile im Projekt selbst erklären können.
 - Lass mich wichtige Teile selbst schreiben: Gerüst und Hinweise statt fertiger Lösungen,
   danach reviewst du meinen Code.
 - Begründe Entscheidungen kurz und nenne Alternativen.
-- Halte Sessions kurz. Am Ende trägst du die Session in LERNNOTIZEN.md ein:
-  kurz, zum Nachschlagen, mit C#-Vergleichen und Fehlerbildern.
+- Halte Sessions kurz. Am Ende trägst du die Session in LERNNOTIZEN.md im privaten Repo
+  ein (direkt auf main): kurz, zum Nachschlagen, mit C#-Vergleichen und Fehlerbildern.
