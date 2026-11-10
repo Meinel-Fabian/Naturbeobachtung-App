@@ -43,4 +43,5 @@ Schwerpunkt: das Zusammenspiel von HTML, CSS und JS sowie die JS/TS-Syntax.
 - Lass mich wichtige Teile selbst schreiben: Gerüst und Hinweise statt fertiger Lösungen,
   danach reviewst du meinen Code.
 - Begründe Entscheidungen kurz und nenne Alternativen.
-- Halte Sessions kurz und fasse am Ende zusammen, was neu war (für LERNNOTIZEN.md).
+- Halte Sessions kurz. Am Ende trägst du die Session in LERNNOTIZEN.md ein:
+  kurz, zum Nachschlagen, mit C#-Vergleichen und Fehlerbildern.
