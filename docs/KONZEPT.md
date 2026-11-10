@@ -42,6 +42,8 @@ So soll sich die App im Alltag anfühlen:
 
 **Später möglich:** Brutzeit-Vorlagen pro Art, die Ereignisse automatisch vorschlagen. Dafür haben Ereignisse von Anfang an ein Feld `typ`.
 
+**Idee, noch zu prüfen:** Standort und Aufnahmezeit aus den EXIF-Daten eines hochgeladenen Fotos übernehmen. Praktisch, wenn Fotos mit Handy oder Kamera vor Ort gemacht und erst später erfasst werden. Offene Fragen: Wie viele Kameras speichern überhaupt GPS-Daten? Was passiert, wenn mehrere Fotos unterschiedliche Orte haben? Werden EXIF-Daten beim Verkleinern entfernt (Datenschutz)? Frühestens in Etappe 5 entscheiden.
+
 ## Technische Architektur
 
 Die App wird eine **PWA** (Progressive Web App) mit **Supabase** als Backend. Login, Datenbank, Foto-Speicher und Sync kommen fertig von Supabase, eigener Code entsteht vor allem im Frontend.
