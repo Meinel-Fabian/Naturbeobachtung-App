@@ -58,9 +58,9 @@ Die App wird eine **PWA** (Progressive Web App) mit **Supabase** als Backend. Lo
 | Hosting | Statisches Hosting (z. B. Vercel oder Netlify) | Frontend ausliefern, HTTPS inklusive |
 | App Store (später) | Capacitor | Web-App als iOS- und Android-App verpacken, beim Prototyp schon erprobt |
 
-**Warum so:** Login und Passwort-Sicherheit selbst zu bauen ist fehleranfällig. Supabase nimmt das ab, und du lernst trotzdem echtes SQL, Datenbankdesign und Rechte-Regeln. Ein eigener Server bleibt später möglich, weil die Datenbank ganz normales PostgreSQL ist.
+**Warum so:** Login und Passwort-Sicherheit selbst zu bauen ist fehleranfällig. Supabase nimmt das ab, trotzdem bleiben echtes SQL, Datenbankdesign und Rechte-Regeln Teil des Projekts. Ein eigener Server bleibt später möglich, weil die Datenbank ganz normales PostgreSQL ist.
 
-**Warum React + TypeScript:** Das Projekt soll auch als Portfolio für den Berufseinstieg dienen. React ist am Markt am gefragtesten, TypeScript ist in neuen Projekten Standard und knüpft an C# an (statische Typen, gleicher Erfinder). Vite statt Next.js, weil es schlanker ist und weniger eigene Konzepte mitbringt. Svelte wäre zum Lernen etwas einfacher gewesen, ist aber weniger verbreitet.
+**Warum React + TypeScript:** React ist am weitesten verbreitet, TypeScript ist in neuen Projekten Standard und bringt statische Typen mit. Vite statt Next.js, weil es schlanker ist und weniger eigene Konzepte mitbringt.
 
 **Datenschutz:** Supabase-Projekt in der Region Frankfurt anlegen, damit die Daten in der EU liegen. Für eine öffentlich erreichbare App braucht es ein Impressum und eine Datenschutzerklärung.
 
@@ -84,7 +84,7 @@ Das Schema ist ein Startpunkt. Feldnamen und Details werden beim Bauen in Etappe
 
 Sechs Etappen, jede endet mit etwas, das im Alltag nutzbar ist. Erst wenn eine Etappe läuft, beginnt die nächste.
 
-| Etappe | Inhalt | Ergebnis | Was du dabei lernst |
+| Etappe | Inhalt | Ergebnis | Neue Themen |
 | --- | --- | --- | --- |
 | 1. Fundament | Projekt aufsetzen, Supabase anbinden, Login, Beobachtung mit Foto, Standort und Notiz, Karte und Liste | Die heutige App, aber gespeichert und auf allen Geräten | Framework-Grundlagen, SQL-Tabellen, Auth, Row Level Security, Datei-Upload |
 | 2. Projekte | Beobachtung in Projekt umwandeln, Beobachtungen anhängen, Chronik | Ein Nest lässt sich über Wochen begleiten | Beziehungen zwischen Tabellen, Routing, Detailseiten |
@@ -109,57 +109,4 @@ Der Prototyp ([GitHub](https://github.com/Meinel-Fabian/Naturbeobachtung-App), S
 - Nutzereingaben gingen ungefiltert in `innerHTML` → das Framework übernimmt das sichere Darstellen.
 - Die Karte war breiter als die Seite → von Anfang an fürs Handy gestalten.
 
-**Vorschlag:** neues Repository anlegen oder den Prototyp in einen Ordner `prototyp/` verschieben und im selben Repository neu beginnen.
-
-## Arbeitsweise mit Claude Code und Lernfokus
-
-Ziel ist nicht nur eine fertige App, sondern dabei möglichst viel zu lernen. Claude soll deshalb erklären, anleiten und dich selbst schreiben lassen, statt alles allein zu bauen.
-
-**Mein Hintergrund**
-
-- Ausbildung: Umschulung zum Anwendungsentwickler, Schwerpunkt C#. Danach 2 Jahre Trainer beim Umschulungsunternehmen.
-- Erfahrung mit HTML, CSS, JavaScript: HTML mittel, CSS mittel, JavaScript gering. Keine Erfahrung in Webentwicklung.
-- Erfahrung mit Frameworks, Datenbanken, Git: nur Grundlagen.
-- Was ich besonders lernen möchte: die Verbindung von HTML, CSS und JS sowie die JS/TS-Syntax.
-- Ziel: Berufseinstieg als Entwickler. Das Projekt soll auf GitHub vorzeigbar sein.
-- Wie viel Zeit ich pro Woche habe: relativ wenig und sporadisch.
-
-**So arbeitest du lernorientiert**
-
-- **Erst erklären lassen, dann bauen:** „Erklär mir, wie Row Level Security funktioniert, bevor wir die Regeln schreiben.“
-- **Selbst schreiben, Claude prüft:** „Gib mir nur das Gerüst und Hinweise, die Funktion schreibe ich selbst. Danach reviewst du.“
-- **Nach dem Warum fragen:** Bei jeder Entscheidung kurz begründen lassen, und Alternativen nennen lassen.
-- **Lernstil einstellen:** In Claude Code gibt es Ausgabestile (`/output-style`), darunter einen Lernmodus, in dem Claude Stellen offen lässt, die du selbst programmierst.
-- **Kleine Schritte:** Pro Session eine Funktion. Plan Mode nutzen, dann umsetzen, testen, committen.
-- **Lernnotizen führen:** Eine Datei `LERNNOTIZEN.md`, in die du nach jeder Session einträgst, was neu war.
-
-**Start für die `CLAUDE.md`** (ins neue Projekt kopieren und ergänzen)
-
-```markdown
-# Naturbeobachtungs-App
-
-Private PWA für Naturfotografen: Beobachtungen mit Foto, Standort und Notiz erfassen
-und daraus Projekte mit Kalender, Ereignissen und Zielen planen.
-Konzept und Roadmap: siehe docs/KONZEPT.md.
-
-## Stack
-React + TypeScript (Vite), Leaflet, Supabase (Auth, PostgreSQL + PostGIS, Storage, RLS), Region Frankfurt.
-
-## Aktuelle Etappe
-Etappe 1: Fundament (Login, Beobachtung mit Foto/Standort/Notiz, Karte und Liste)
-
-## Regeln
-- Alle Daten sind privat: jede Tabelle hat user_id und eine RLS-Regel.
-- Ereignisse haben ein Feld typ (für spätere Brutzeit-Vorlagen).
-- Mobile first.
-
-## Lernmodus
-Ich möchte beim Bauen lernen. Hintergrund: siehe docs/KONZEPT.md, Abschnitt „Mein Hintergrund“.
-- Erkläre Konzepte, bevor du sie umsetzt.
-- Lass mich wichtige Teile selbst schreiben und gib Hinweise statt fertiger Lösungen.
-- Begründe Entscheidungen kurz und nenne Alternativen.
-```
-
-**Erster Auftrag in Claude Code**, sobald der Hintergrund eingetragen ist:
-
-> „Lies die CLAUDE.md. Lass uns Etappe 1 im Plan Mode planen: Welche Schritte, in welcher Reihenfolge, und was lerne ich bei jedem? Noch keinen Code schreiben.“
+Der Prototyp liegt im Ordner `prototyp/`, die neue App entsteht im selben Repository.
