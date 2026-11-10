@@ -48,16 +48,19 @@ Die App wird eine **PWA** (Progressive Web App) mit **Supabase** als Backend. Lo
 
 | Baustein | Technik | Wofür |
 | --- | --- | --- |
-| Frontend | SvelteKit (Alternative: Vue oder React) | Oberfläche, Formulare, Kalender |
-| Karte | Leaflet + OpenStreetMap | Wie im Prototyp, Wissen wird übernommen |
+| Frontend | React + TypeScript mit Vite | Oberfläche, Formulare, Kalender |
+| Karte | Leaflet (über react-leaflet) + OpenStreetMap | Wie im Prototyp, Wissen wird übernommen |
 | App-Verhalten | PWA mit Service Worker | Installierbar aufs Handy, offline nutzbar, Push |
 | Login | Supabase Auth | E-Mail und Passwort, Sitzungen, Passwort-Reset |
 | Datenbank | Supabase PostgreSQL (+ PostGIS für Geodaten) | Beobachtungen, Projekte, Ereignisse |
 | Rechte | Row Level Security | Jeder Nutzer sieht nur Zeilen mit seiner `user_id` |
 | Fotos | Supabase Storage | Bilder, verkleinert beim Hochladen |
 | Hosting | Statisches Hosting (z. B. Vercel oder Netlify) | Frontend ausliefern, HTTPS inklusive |
+| App Store (später) | Capacitor | Web-App als iOS- und Android-App verpacken, beim Prototyp schon erprobt |
 
 **Warum so:** Login und Passwort-Sicherheit selbst zu bauen ist fehleranfällig. Supabase nimmt das ab, und du lernst trotzdem echtes SQL, Datenbankdesign und Rechte-Regeln. Ein eigener Server bleibt später möglich, weil die Datenbank ganz normales PostgreSQL ist.
+
+**Warum React + TypeScript:** Das Projekt soll auch als Portfolio für den Berufseinstieg dienen. React ist am Markt am gefragtesten, TypeScript ist in neuen Projekten Standard und knüpft an C# an (statische Typen, gleicher Erfinder). Vite statt Next.js, weil es schlanker ist und weniger eigene Konzepte mitbringt. Svelte wäre zum Lernen etwas einfacher gewesen, ist aber weniger verbreitet.
 
 **Datenschutz:** Supabase-Projekt in der Region Frankfurt anlegen, damit die Daten in der EU liegen. Für eine öffentlich erreichbare App braucht es ein Impressum und eine Datenschutzerklärung.
 
@@ -88,7 +91,7 @@ Sechs Etappen, jede endet mit etwas, das im Alltag nutzbar ist. Erst wenn eine E
 | 3. Kalender und Ziele | Ereignisse und Ziele pro Projekt, Gesamtkalender | Alle Termine auf einen Blick | Datumslogik, Kalender-Komponenten, Formulare mit Validierung |
 | 4. Erinnerungen | Push-Benachrichtigungen vor Ereignissen | Die App meldet sich von selbst | Service Worker, Web Push, geplante Aufgaben auf dem Server |
 | 5. Offline und Feinschliff | Offline erfassen, Sync, Handy-Layout, Export als CSV | Im Wald ohne Netz nutzbar | Lokale Datenbank im Browser, Konfliktbehandlung, responsives Design |
-| 6. Später | Brutzeit-Vorlagen pro Art | Termine werden vorgeschlagen | Datenpflege, Vorschlagslogik |
+| 6. Später | Brutzeit-Vorlagen pro Art, App-Store-Version per Capacitor | Termine werden vorgeschlagen, App im Store | Datenpflege, Vorschlagslogik, App-Veröffentlichung |
 
 **Faustregel für jede Etappe:** planen, in kleinen Schritten bauen, testen, committen. Lieber eine kleine Funktion fertig als drei halb.
 
@@ -96,7 +99,7 @@ Sechs Etappen, jede endet mit etwas, das im Alltag nutzbar ist. Erst wenn eine E
 
 Der Prototyp ([GitHub](https://github.com/Meinel-Fabian/Naturbeobachtung-App), Stand August 2025) ist reines HTML, CSS und JavaScript mit Leaflet, rund 230 Zeilen in drei Dateien. Die neue App wird neu aufgesetzt, der Prototyp bleibt als Referenz.
 
-**Wird übernommen:** die Idee, das Formular (Art, Beschreibung, Ort, Datum), die Leaflet-Karte und das automatische Ermitteln des Standorts.
+**Wird übernommen:** die Idee, das Formular (Art, Beschreibung, Ort, Datum), die Leaflet-Karte und das automatische Ermitteln des Standorts. Außerdem die Erfahrung mit Capacitor: Der Prototyp lief damit schon als App auf einem Testhandy.
 
 **Lehren aus dem Prototyp, die in der neuen App gelöst sein sollen:**
 
@@ -114,10 +117,12 @@ Ziel ist nicht nur eine fertige App, sondern dabei möglichst viel zu lernen. Cl
 
 **Mein Hintergrund**
 
-- Erfahrung mit HTML, CSS, JavaScript: HTML mittel, CSS mittel und Javascript gering
-- Erfahrung mit Frameworks, Datenbanken, Git: Habe nur grundlagen vermittelt bekommen
-- Was ich besonders lernen möchte: Die verbindung vin HTML, CSS und JS, sowie die JS Syntax (da hab ich noch keuine Ahnung)
-- Wie viel Zeit ich pro Woche habe: relativ wenig, und sporatisch
+- Ausbildung: Umschulung zum Anwendungsentwickler, Schwerpunkt C#. Danach 2 Jahre Trainer beim Umschulungsunternehmen.
+- Erfahrung mit HTML, CSS, JavaScript: HTML mittel, CSS mittel, JavaScript gering. Keine Erfahrung in Webentwicklung.
+- Erfahrung mit Frameworks, Datenbanken, Git: nur Grundlagen.
+- Was ich besonders lernen möchte: die Verbindung von HTML, CSS und JS sowie die JS/TS-Syntax.
+- Ziel: Berufseinstieg als Entwickler. Das Projekt soll auf GitHub vorzeigbar sein.
+- Wie viel Zeit ich pro Woche habe: relativ wenig und sporadisch.
 
 **So arbeitest du lernorientiert**
 
@@ -138,7 +143,7 @@ und daraus Projekte mit Kalender, Ereignissen und Zielen planen.
 Konzept und Roadmap: siehe docs/KONZEPT.md.
 
 ## Stack
-SvelteKit, Leaflet, Supabase (Auth, PostgreSQL + PostGIS, Storage, RLS), Region Frankfurt.
+React + TypeScript (Vite), Leaflet, Supabase (Auth, PostgreSQL + PostGIS, Storage, RLS), Region Frankfurt.
 
 ## Aktuelle Etappe
 Etappe 1: Fundament (Login, Beobachtung mit Foto/Standort/Notiz, Karte und Liste)
