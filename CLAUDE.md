@@ -14,6 +14,11 @@ Hosting statisch (Vercel oder Netlify).
 Etappe 1: Fundament – Projekt aufsetzen, Supabase anbinden, Login,
 Beobachtung mit Foto/Standort/Notiz, Karte und Liste.
 Erst wenn eine Etappe läuft, beginnt die nächste.
+Filter nach Art und Zeitraum kommen erst nach Etappe 1.
+
+## Entscheidungen
+- Standort von Anfang an mit PostGIS (geography Point). Speichern als `POINT(laenge breite)`
+  (Länge zuerst!), Lesen als Zahlen über `ST_Y` (Breite) und `ST_X` (Länge).
 
 ## Regeln
 - Alle Daten sind privat: jede Tabelle hat user_id und eine RLS-Regel.
