@@ -4,16 +4,15 @@ interface BeobachtungsEintragProps {
     notiz: string;
 }
 
-function BeobachtungEintrag({art, datum, notiz}: BeobachtungsEintragProps){
+function BeobachtungsEintrag({art, datum, notiz}: BeobachtungsEintragProps){
     return(
-        <div>
+        <article>
             <h2>{art}</h2>
             <p>{datum}</p>
-            <article>{notiz}</article>
-        </div>
+            <p>{notiz}</p>
+        </article>
     )
 }
 
-<BeobachtungEintrag art='Buntspecht' datum='10.11.2026' notiz='Höhle ca. 4 m hoch, Eiche am Waldrand'/>
 
-export default BeobachtungEintrag;
+export default BeobachtungsEintrag;
