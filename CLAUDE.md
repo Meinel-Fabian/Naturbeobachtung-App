@@ -6,7 +6,7 @@ Konzept und Roadmap: siehe docs/KONZEPT.md.
 Der alte Prototyp (HTML/CSS/JS + Leaflet) liegt in prototyp/ und dient nur als Referenz.
 
 ## Stack
-React + TypeScript mit Vite, Leaflet (react-leaflet) + OpenStreetMap, PWA mit Service Worker,
+React + TypeScript mit Vite, MapLibre GL (react-map-gl) + OpenFreeMap, PWA mit Service Worker,
 Supabase (Auth, PostgreSQL + PostGIS, Storage, Row Level Security), Region Frankfurt.
 Hosting statisch (Vercel oder Netlify). Später App Store per Capacitor.
 
@@ -21,6 +21,10 @@ Filter nach Art und Zeitraum kommen erst nach Etappe 1.
   Vite statt Next.js (schlanker, weniger eigene Konzepte).
 - Standort von Anfang an mit PostGIS (geography Point). Speichern als `POINT(laenge breite)`
   (Länge zuerst!), Lesen als Zahlen über `ST_Y` (Breite) und `ST_X` (Länge).
+- Karte: MapLibre GL statt Leaflet (Vektorkarte, stufenloser Zoom, drehbar), eingebunden über
+  `react-map-gl/maplibre`. Standardstil OpenFreeMap Liberty (kostenlos, ohne Key), umschaltbar
+  auf Satellitenbild. Satellitenquelle (z. B. Esri oder MapTiler) vor Veröffentlichung auf
+  Nutzungsbedingungen und Key prüfen. Achtung: MapLibre erwartet [Länge, Breite].
 
 ## Regeln
 - Alle Daten sind privat: jede Tabelle hat user_id und eine RLS-Regel.

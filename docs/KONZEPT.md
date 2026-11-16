@@ -51,7 +51,7 @@ Die App wird eine **PWA** (Progressive Web App) mit **Supabase** als Backend. Lo
 | Baustein | Technik | Wofür |
 | --- | --- | --- |
 | Frontend | React + TypeScript mit Vite | Oberfläche, Formulare, Kalender |
-| Karte | Leaflet (über react-leaflet) + OpenStreetMap | Wie im Prototyp, Wissen wird übernommen |
+| Karte | MapLibre GL (über react-map-gl) + OpenFreeMap | Vektorkarte im Stil Liberty, umschaltbar auf Satellitenbild |
 | App-Verhalten | PWA mit Service Worker | Installierbar aufs Handy, offline nutzbar, Push |
 | Login | Supabase Auth | E-Mail und Passwort, Sitzungen, Passwort-Reset |
 | Datenbank | Supabase PostgreSQL (+ PostGIS für Geodaten) | Beobachtungen, Projekte, Ereignisse |
@@ -101,7 +101,7 @@ Sechs Etappen, jede endet mit etwas, das im Alltag nutzbar ist. Erst wenn eine E
 
 Der Prototyp ([GitHub](https://github.com/Meinel-Fabian/Naturbeobachtung-App), Stand August 2025) ist reines HTML, CSS und JavaScript mit Leaflet, rund 230 Zeilen in drei Dateien. Die neue App wird neu aufgesetzt, der Prototyp bleibt als Referenz.
 
-**Wird übernommen:** die Idee, das Formular (Art, Beschreibung, Ort, Datum), die Leaflet-Karte und das automatische Ermitteln des Standorts. Außerdem die Erfahrung mit Capacitor: Der Prototyp lief damit schon als App auf einem Testhandy.
+**Wird übernommen:** die Idee, das Formular (Art, Beschreibung, Ort, Datum), eine Karte mit Markern und das automatische Ermitteln des Standorts. Statt Leaflet kommt MapLibre GL zum Einsatz: stufenloser Zoom, drehbar und ein moderneres Kartenbild. Außerdem die Erfahrung mit Capacitor: Der Prototyp lief damit schon als App auf einem Testhandy.
 
 **Lehren aus dem Prototyp, die in der neuen App gelöst sein sollen:**
 
