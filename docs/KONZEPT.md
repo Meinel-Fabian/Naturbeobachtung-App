@@ -27,16 +27,16 @@ So soll sich die App im Alltag anfühlen:
 
 ## Funktionsumfang
 
-| Bereich | Was es kann |
-| --- | --- |
-| Konto | Registrieren, Einloggen, Passwort zurücksetzen. Daten auf allen Geräten synchron. |
-| Beobachtungen | Foto aufnehmen oder hochladen, Standort automatisch (manuell korrigierbar per Klick auf die Karte), Art, Datum, Notizen. |
-| Karte und Liste | Alle Beobachtungen auf einer Karte und als Liste, filterbar nach Art und Zeitraum. |
-| Projekte | Beobachtung in ein Projekt umwandeln, weitere Beobachtungen anhängen, Chronik als Zeitleiste. |
-| Kalender | Ereignisse pro Projekt (mit Typ wie Eiablage, Schlupf, Ausfliegen, Eigenes), Gesamtkalender über alle Projekte. |
-| Ziele | Ziele pro Projekt setzen und abhaken, z. B. ein bestimmtes Foto. |
-| Erinnerungen | Push-Benachrichtigung vor Ereignissen und Zielen. |
-| Offline | Erfassen ohne Netz, Synchronisierung sobald wieder online. |
+| Bereich         | Was es kann                                                                                                              |
+| --------------- | ------------------------------------------------------------------------------------------------------------------------ |
+| Konto           | Registrieren, Einloggen, Passwort zurücksetzen. Daten auf allen Geräten synchron.                                        |
+| Beobachtungen   | Foto aufnehmen oder hochladen, Standort automatisch (manuell korrigierbar per Klick auf die Karte), Art, Datum, Notizen. |
+| Karte und Liste | Alle Beobachtungen auf einer Karte und als Liste, filterbar nach Art und Zeitraum.                                       |
+| Projekte        | Beobachtung in ein Projekt umwandeln, weitere Beobachtungen anhängen, Chronik als Zeitleiste.                            |
+| Kalender        | Ereignisse pro Projekt (mit Typ wie Eiablage, Schlupf, Ausfliegen, Eigenes), Gesamtkalender über alle Projekte.          |
+| Ziele           | Ziele pro Projekt setzen und abhaken, z. B. ein bestimmtes Foto.                                                         |
+| Erinnerungen    | Push-Benachrichtigung vor Ereignissen und Zielen.                                                                        |
+| Offline         | Erfassen ohne Netz, Synchronisierung sobald wieder online.                                                               |
 
 **Bewusst nicht enthalten:** Teilen mit anderen, öffentliche Profile, Artbestimmung per KI.
 
@@ -48,17 +48,17 @@ So soll sich die App im Alltag anfühlen:
 
 Die App wird eine **PWA** (Progressive Web App) mit **Supabase** als Backend. Login, Datenbank, Foto-Speicher und Sync kommen fertig von Supabase, eigener Code entsteht vor allem im Frontend.
 
-| Baustein | Technik | Wofür |
-| --- | --- | --- |
-| Frontend | React + TypeScript mit Vite | Oberfläche, Formulare, Kalender |
-| Karte | MapLibre GL (über react-map-gl) + OpenFreeMap | Vektorkarte im Stil Liberty, umschaltbar auf Satellitenbild |
-| App-Verhalten | PWA mit Service Worker | Installierbar aufs Handy, offline nutzbar, Push |
-| Login | Supabase Auth | E-Mail und Passwort, Sitzungen, Passwort-Reset |
-| Datenbank | Supabase PostgreSQL (+ PostGIS für Geodaten) | Beobachtungen, Projekte, Ereignisse |
-| Rechte | Row Level Security | Jeder Nutzer sieht nur Zeilen mit seiner `user_id` |
-| Fotos | Supabase Storage | Bilder, verkleinert beim Hochladen |
-| Hosting | Statisches Hosting (z. B. Vercel oder Netlify) | Frontend ausliefern, HTTPS inklusive |
-| App Store (später) | Capacitor | Web-App als iOS- und Android-App verpacken, beim Prototyp schon erprobt |
+| Baustein           | Technik                                        | Wofür                                                                   |
+| ------------------ | ---------------------------------------------- | ----------------------------------------------------------------------- |
+| Frontend           | React + TypeScript mit Vite                    | Oberfläche, Formulare, Kalender                                         |
+| Karte              | MapLibre GL (über react-map-gl) + OpenFreeMap  | Vektorkarte im Stil Liberty, umschaltbar auf Satellitenbild             |
+| App-Verhalten      | PWA mit Service Worker                         | Installierbar aufs Handy, offline nutzbar, Push                         |
+| Login              | Supabase Auth                                  | E-Mail und Passwort, Sitzungen, Passwort-Reset                          |
+| Datenbank          | Supabase PostgreSQL (+ PostGIS für Geodaten)   | Beobachtungen, Projekte, Ereignisse                                     |
+| Rechte             | Row Level Security                             | Jeder Nutzer sieht nur Zeilen mit seiner `user_id`                      |
+| Fotos              | Supabase Storage                               | Bilder, verkleinert beim Hochladen                                      |
+| Hosting            | Statisches Hosting (z. B. Vercel oder Netlify) | Frontend ausliefern, HTTPS inklusive                                    |
+| App Store (später) | Capacitor                                      | Web-App als iOS- und Android-App verpacken, beim Prototyp schon erprobt |
 
 **Warum so:** Login und Passwort-Sicherheit selbst zu bauen ist fehleranfällig. Supabase nimmt das ab, trotzdem bleiben echtes SQL, Datenbankdesign und Rechte-Regeln Teil des Projekts. Ein eigener Server bleibt später möglich, weil die Datenbank ganz normales PostgreSQL ist.
 
@@ -70,13 +70,13 @@ Die App wird eine **PWA** (Progressive Web App) mit **Supabase** als Backend. Lo
 
 Fünf Tabellen reichen für alle Etappen. Jede Tabelle hat eine `user_id`, über die die Rechte-Regeln greifen. Benutzer selbst verwaltet Supabase Auth.
 
-| Tabelle | Wichtige Felder | Gehört zu |
-| --- | --- | --- |
-| `beobachtungen` | id, user_id, art, notiz, beobachtet_am, standort (Koordinaten), projekt_id (optional) | Nutzer, optional ein Projekt |
-| `fotos` | id, user_id, beobachtung_id, speicherpfad, aufgenommen_am | eine Beobachtung |
-| `projekte` | id, user_id, titel, beschreibung, status (aktiv / abgeschlossen), erstellt_aus_beobachtung_id | Nutzer |
-| `ereignisse` | id, user_id, projekt_id, typ (eiablage, schlupf, ausfliegen, eigenes …), titel, datum, erinnerung_am, notiz | ein Projekt |
-| `ziele` | id, user_id, projekt_id, titel, zieldatum, erledigt | ein Projekt |
+| Tabelle         | Wichtige Felder                                                                                             | Gehört zu                    |
+| --------------- | ----------------------------------------------------------------------------------------------------------- | ---------------------------- |
+| `beobachtungen` | id, user_id, art, notiz, beobachtet_am, standort (Koordinaten), projekt_id (optional)                       | Nutzer, optional ein Projekt |
+| `fotos`         | id, user_id, beobachtung_id, speicherpfad, aufgenommen_am                                                   | eine Beobachtung             |
+| `projekte`      | id, user_id, titel, beschreibung, status (aktiv / abgeschlossen), erstellt_aus_beobachtung_id               | Nutzer                       |
+| `ereignisse`    | id, user_id, projekt_id, typ (eiablage, schlupf, ausfliegen, eigenes …), titel, datum, erinnerung_am, notiz | ein Projekt                  |
+| `ziele`         | id, user_id, projekt_id, titel, zieldatum, erledigt                                                         | ein Projekt                  |
 
 **Beziehungen:** Ein Projekt hat viele Beobachtungen, Ereignisse und Ziele. Eine Beobachtung hat beliebig viele Fotos. Eine Beobachtung ohne `projekt_id` ist eine lose Einzelbeobachtung.
 
@@ -86,14 +86,14 @@ Das Schema ist ein Startpunkt. Feldnamen und Details werden beim Bauen in Etappe
 
 Sechs Etappen, jede endet mit etwas, das im Alltag nutzbar ist. Erst wenn eine Etappe läuft, beginnt die nächste.
 
-| Etappe | Inhalt | Ergebnis | Neue Themen |
-| --- | --- | --- | --- |
-| 1. Fundament | Projekt aufsetzen, Supabase anbinden, Login, Beobachtung mit Foto, Standort und Notiz, Karte und Liste | Die heutige App, aber gespeichert und auf allen Geräten | Framework-Grundlagen, SQL-Tabellen, Auth, Row Level Security, Datei-Upload |
-| 2. Projekte | Beobachtung in Projekt umwandeln, Beobachtungen anhängen, Chronik | Ein Nest lässt sich über Wochen begleiten | Beziehungen zwischen Tabellen, Routing, Detailseiten |
-| 3. Kalender und Ziele | Ereignisse und Ziele pro Projekt, Gesamtkalender | Alle Termine auf einen Blick | Datumslogik, Kalender-Komponenten, Formulare mit Validierung |
-| 4. Erinnerungen | Push-Benachrichtigungen vor Ereignissen | Die App meldet sich von selbst | Service Worker, Web Push, geplante Aufgaben auf dem Server |
-| 5. Offline und Feinschliff | Offline erfassen, Sync, Handy-Layout, Export als CSV | Im Wald ohne Netz nutzbar | Lokale Datenbank im Browser, Konfliktbehandlung, responsives Design |
-| 6. Später | Brutzeit-Vorlagen pro Art, App-Store-Version per Capacitor | Termine werden vorgeschlagen, App im Store | Datenpflege, Vorschlagslogik, App-Veröffentlichung |
+| Etappe                     | Inhalt                                                                                                 | Ergebnis                                                | Neue Themen                                                                |
+| -------------------------- | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------- | -------------------------------------------------------------------------- |
+| 1. Fundament               | Projekt aufsetzen, Supabase anbinden, Login, Beobachtung mit Foto, Standort und Notiz, Karte und Liste | Die heutige App, aber gespeichert und auf allen Geräten | Framework-Grundlagen, SQL-Tabellen, Auth, Row Level Security, Datei-Upload |
+| 2. Projekte                | Beobachtung in Projekt umwandeln, Beobachtungen anhängen, Chronik                                      | Ein Nest lässt sich über Wochen begleiten               | Beziehungen zwischen Tabellen, Routing, Detailseiten                       |
+| 3. Kalender und Ziele      | Ereignisse und Ziele pro Projekt, Gesamtkalender                                                       | Alle Termine auf einen Blick                            | Datumslogik, Kalender-Komponenten, Formulare mit Validierung               |
+| 4. Erinnerungen            | Push-Benachrichtigungen vor Ereignissen                                                                | Die App meldet sich von selbst                          | Service Worker, Web Push, geplante Aufgaben auf dem Server                 |
+| 5. Offline und Feinschliff | Offline erfassen, Sync, Handy-Layout, Export als CSV                                                   | Im Wald ohne Netz nutzbar                               | Lokale Datenbank im Browser, Konfliktbehandlung, responsives Design        |
+| 6. Später                  | Brutzeit-Vorlagen pro Art, App-Store-Version per Capacitor                                             | Termine werden vorgeschlagen, App im Store              | Datenpflege, Vorschlagslogik, App-Veröffentlichung                         |
 
 **Faustregel für jede Etappe:** planen, in kleinen Schritten bauen, testen, committen. Lieber eine kleine Funktion fertig als drei halb.
 
