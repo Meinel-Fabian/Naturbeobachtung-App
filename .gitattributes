@@ -1,0 +1,2 @@
+# Alle Textdateien mit LF-Zeilenenden speichern, auf jedem Betriebssystem
+* text=auto eol=lf
